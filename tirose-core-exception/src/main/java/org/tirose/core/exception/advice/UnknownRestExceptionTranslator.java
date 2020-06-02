@@ -43,7 +43,7 @@ import javax.servlet.Servlet;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
 @RestControllerAdvice
-public class SnowingRestExceptionTranslator {
+public class UnknownRestExceptionTranslator {
 
 	@ExceptionHandler(ServiceException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
