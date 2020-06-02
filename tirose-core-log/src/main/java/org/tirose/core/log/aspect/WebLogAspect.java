@@ -16,7 +16,7 @@ import java.util.Arrays;
 @Slf4j
 public class WebLogAspect {
 
-    @Pointcut("execution( * com.snowing..controller.*.*(..))")//两个..代表所有子目录，最后括号里的两个..代表所有参数
+    @Pointcut("@annotation(org.springframework.stereotype.Controller)")//两个..代表所有子目录，最后括号里的两个..代表所有参数
     public void logPointCut() {
     }
 
