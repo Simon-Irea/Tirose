@@ -18,8 +18,7 @@
         <module>tirose-core-boot</module>
         <module>tirose-starter-rocketmq</module>
         <module>tirose-core-cache</module>
-        <module>tirose-core-search</module>
-        <module>tirose-starter-search</module>
+        <module>tirose-starter-elasticsearch</module>
     </modules>
 
     <properties>

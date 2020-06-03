@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tirose-starter-search</artifactId>
+    <artifactId>tirose-starter-elasticsearch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <groupId>org.tirose</groupId>
-    <name>tirose-starter-search</name>
+    <name>tirose-starter-elasticsearch</name>
 
     <dependencies>
         <dependency>
