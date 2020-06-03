@@ -9,10 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tirose-core-secure</artifactId>
-    <groupId>org.tirose</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>tirose-core-secure</name>
+    <artifactId>tirose-core-cache</artifactId>
+
 
 </project>

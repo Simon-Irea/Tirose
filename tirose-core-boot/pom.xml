@@ -5,11 +5,51 @@
     <parent>
         <artifactId>tirose</artifactId>
         <groupId>org.tirose</groupId>
-        <version>${tirose.project.version}</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tirose-core-boot</artifactId>
+    <groupId>org.tirose</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>tirose-core-boot</name>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-cache</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-exception</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-log</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-mybatis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-secure</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-tool</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tirose</groupId>
+            <artifactId>tirose-core-version</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

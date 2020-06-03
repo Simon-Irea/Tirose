@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 public @interface ApiVersion {
 
 	/**
-	 * version
+	 * 值
 	 *
 	 * @return
 	 */

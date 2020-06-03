@@ -7,16 +7,19 @@
     <groupId>org.tirose</groupId>
     <artifactId>tirose</artifactId>
     <packaging>pom</packaging>
-    <version>${tirose.project.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>tirose-core-log</module>
         <module>tirose-core-exception</module>
         <module>tirose-core-mybatis</module>
         <module>tirose-core-version</module>
         <module>tirose-core-tool</module>
-        <module>tirose-starter-annotation</module>
         <module>tirose-core-secure</module>
         <module>tirose-core-boot</module>
+        <module>tirose-starter-rocketmq</module>
+        <module>tirose-core-cache</module>
+        <module>tirose-core-search</module>
+        <module>tirose-starter-search</module>
     </modules>
 
     <properties>
