@@ -19,6 +19,7 @@
         <module>tirose-starter-rocketmq</module>
         <module>tirose-core-cache</module>
         <module>tirose-starter-elasticsearch</module>
+        <module>tirose-starter-netty</module>
     </modules>
 
     <properties>
