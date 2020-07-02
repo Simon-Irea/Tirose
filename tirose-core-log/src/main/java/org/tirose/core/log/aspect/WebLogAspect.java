@@ -11,6 +11,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+/**
+ * controller 层切面日志类
+ */
 @Aspect
 @Component
 @Slf4j
