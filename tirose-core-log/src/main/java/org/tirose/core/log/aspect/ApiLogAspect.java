@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.tirose.core.log.annotation.ApiLog;
 import org.tirose.core.log.persistence.LogPersistence;
+import org.tirose.core.log.publisher.ApiLogPublisher;
 
 /**
  * @ApiLog 注解的切面日志类
@@ -25,17 +26,18 @@ public class ApiLogAspect {
     public void logPointCut() {
     }
 
-    @Around("logPointCut()")
-    public Object around(ProceedingJoinPoint point) throws Throwable {
+    @Around(value = "logPointCut() && @annotation(apiLog)")
+    public Object around(ProceedingJoinPoint point,ApiLog apiLog) throws Throwable {
     	String className = point.getTarget().getClass().getName();
 		String methodName = point.getSignature().getName();
+
 		long beginTime = System.currentTimeMillis();
         // 执行方法
         Object result = point.proceed();
         // 执行时长(毫秒)
         long time = System.currentTimeMillis() - beginTime;
         //异步保存日志
-        logPersistence.saveLog(point, time);
+		ApiLogPublisher.publishEvent(methodName, className, apiLog, time);
         return result;
     }
 }
