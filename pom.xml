@@ -20,6 +20,7 @@
         <module>tirose-core-cache</module>
         <module>tirose-starter-elasticsearch</module>
         <module>tirose-starter-excel</module>
+        <module>tirose-core-launch</module>
     </modules>
 
     <properties>

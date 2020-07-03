@@ -3,6 +3,7 @@ package org.tirose.core.log.publisher;
 import org.tirose.core.log.annotation.ApiLog;
 import org.tirose.core.log.event.ApiLogEvent;
 import org.tirose.core.tool.util.SpringUtil;
+import org.tirose.core.tool.util.WebUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class ApiLogPublisher {
 	public static void publishEvent(String methodName, String className, ApiLog apiLog, long time) {
-		HttpServletRequest request = WebUtil.getRequest();
+		HttpServletRequest request = WebUtil.getHttpServletRequest();
 		//封装持久化数据
 		LogApi logApi = new LogApi();
 		logApi.setType("1");

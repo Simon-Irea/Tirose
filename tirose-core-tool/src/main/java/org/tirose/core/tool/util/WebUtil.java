@@ -4,6 +4,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
+import org.tirose.core.exception.exception.SpringInitializeException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +22,7 @@ public class WebUtil extends WebUtils {
 	public static HttpServletRequest getHttpServletRequest() {
 		ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		if (requestAttributes == null) {
-
+			throw new SpringInitializeException("获取HttpServletRequest异常");
 		}
 		HttpServletRequest request = requestAttributes.getRequest();
 		return request;

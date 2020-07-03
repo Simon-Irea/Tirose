@@ -1,4 +1,4 @@
-package listener;
+package org.tirose.core.boot.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
