@@ -19,8 +19,12 @@
         <module>tirose-starter-rocketmq</module>
         <module>tirose-core-cache</module>
         <module>tirose-starter-elasticsearch</module>
-        <module>tirose-starter-excel</module>
+        <module>tirose-starter-poi</module>
         <module>tirose-core-launch</module>
+        <module>tirose-starter-swagger</module>
+        <module>tirose-core-file</module>
+        <module>tirose-starter-quartz</module>
+        <module>tirose-core-auto</module>
     </modules>
 
     <properties>

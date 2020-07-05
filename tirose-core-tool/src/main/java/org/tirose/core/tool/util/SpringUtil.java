@@ -15,21 +15,11 @@ import javax.xml.ws.Service;
  * @Date : 2020/7/3
  */
 @Slf4j
-public class SpringUtil implements ApplicationContextAware {
-
-	private static ApplicationContext context;
-
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		context = applicationContext;
-	}
+public class SpringUtil {
 
 	public static void publishEvent(ApplicationEvent event) {
-		if (context == null) {
-			throw new SpringInitializeException("SpringUtil容器注入失败");
-		}
 		try {
-			context.publishEvent(event);
+			ApplicationContextUtil.getApplicationContext().publishEvent(event);
 		} catch (Exception ex) {
 			log.error(ex.getMessage());
 		}

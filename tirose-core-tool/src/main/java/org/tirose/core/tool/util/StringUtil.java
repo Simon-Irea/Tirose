@@ -17,6 +17,7 @@
 package org.tirose.core.tool.util;
 
 import org.tirose.core.tool.constant.CharPool;
+import org.tirose.core.tool.constant.RandomType;
 import org.tirose.core.tool.constant.StringPool;
 import org.tirose.core.tool.support.StrSpliter;
 import org.springframework.lang.Nullable;
