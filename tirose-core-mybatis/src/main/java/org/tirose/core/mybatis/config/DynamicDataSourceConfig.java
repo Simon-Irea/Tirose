@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.kamfu.supporttong.mapper")
+//@MapperScan("com.kamfu.supporttong.mapper")
 public class DynamicDataSourceConfig {
     /**
      * mybatis-plus配置
