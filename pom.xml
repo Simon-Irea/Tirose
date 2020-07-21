@@ -25,6 +25,7 @@
         <module>tirose-core-file</module>
         <module>tirose-starter-quartz</module>
         <module>tirose-core-auto</module>
+        <module>tirose-starter-generator</module>
     </modules>
 
     <properties>
