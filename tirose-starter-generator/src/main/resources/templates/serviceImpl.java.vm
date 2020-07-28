@@ -57,6 +57,10 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public Boolean save(${className}VO ${classname}) {
         Integer count = ${classname}Mapper.insert(${classname});
+        if(count == 0) {
+            throw new RuntimeException("保存失败");
+        }
+        return true;
     }
 
     /**
@@ -65,6 +69,15 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public Boolean batchSave(List<${className}VO> ${classname}s) {
 
+        if(null == ${classname}s || ${classname}s.size() == 0) {
+            throw new RuntimeException("请传入数据");
+        }
+        Integer count = ${classname}Mapper.batchInsert(${classname}s);
+
+        if(count != ${classname}s.size()) {
+            throw new RuntimeException("保存失败");
+        }
+        return true;
     }
 
     /**
