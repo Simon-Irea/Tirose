@@ -10,7 +10,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>tirose-core-log</module>
-        <module>tirose-core-exception</module>
         <module>tirose-core-mybatis</module>
         <module>tirose-core-version</module>
         <module>tirose-core-tool</module>

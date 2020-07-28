@@ -1,8 +1,8 @@
-package org.tirose.core.exception.exception;
+package org.tirose.core.tool.exception;
 
+import lombok.Getter;
 import org.tirose.core.tool.api.IResultCode;
 import org.tirose.core.tool.api.ResultCode;
-import lombok.Getter;
 
 public class SecureException extends RuntimeException {
 	private static final long serialVersionUID = 2359767895161832954L;

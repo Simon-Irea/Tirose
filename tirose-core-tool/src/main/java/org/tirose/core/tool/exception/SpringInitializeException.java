@@ -1,4 +1,4 @@
-package org.tirose.core.exception.exception;
+package org.tirose.core.tool.exception;
 
 import lombok.Getter;
 import org.tirose.core.tool.api.IResultCode;

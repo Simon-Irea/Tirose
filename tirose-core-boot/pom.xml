@@ -23,11 +23,6 @@
         </dependency>
         <dependency>
             <groupId>org.tirose</groupId>
-            <artifactId>tirose-core-exception</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tirose</groupId>
             <artifactId>tirose-core-log</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

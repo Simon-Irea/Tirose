@@ -14,11 +14,8 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package org.tirose.core.exception.advice;
+package org.tirose.core.boot.advice;
 
-import org.tirose.core.exception.exception.SecureException;
-import org.tirose.core.exception.exception.ServiceException;
-import org.tirose.core.tool.api.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -29,6 +26,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.tirose.core.tool.api.ApiResponse;
+import org.tirose.core.tool.exception.SecureException;
+import org.tirose.core.tool.exception.ServiceException;
 
 import javax.servlet.Servlet;
 
