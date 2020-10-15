@@ -1,0 +1,61 @@
+package ${package}.service;
+
+import ${package}.domain.${className}DO;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service {
+
+    /**
+     * 根据id获取详情
+     */
+	${className} detail(${pk.attrType} ${pk.attrname});
+
+    /**
+     * 分页
+     */
+    PageInfo<${className}> page(Query query, ${className}VO ${classname});
+
+    /**
+     * 列表
+     */
+	List<${className}> list(${className}VO ${classname});
+
+    /**
+     * 保存
+     */
+	Boolean save(${className}VO ${classname});
+
+    /**
+     * 批量保存
+     */
+    Boolean batchSave(List<${className}VO> ${classname}s);
+
+    /**
+     * 更新
+     */
+    Boolean update(${className}VO ${classname});
+
+    /**
+     * 更新状态
+     */
+    Boolean updateStatus(${pk.attrType} ${pk.attrname});
+
+    /**
+     * 删除
+     */
+	Boolean remove(${pk.attrType} ${pk.attrname});
+
+    /**
+     * 批量删除
+     */
+	Boolean batchRemove(${pk.attrType}[] ${pk.attrname}s);
+}

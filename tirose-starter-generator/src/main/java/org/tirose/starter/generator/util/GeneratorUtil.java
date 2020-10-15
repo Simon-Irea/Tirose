@@ -2,6 +2,7 @@ package org.tirose.starter.generator.util;
 
 
 import org.tirose.core.tool.exception.ServiceException;
+import org.tirose.core.tool.util.ApplicationContextUtil;
 import org.tirose.core.tool.util.DateUtil;
 import org.tirose.starter.generator.bean.ColumnDO;
 import org.tirose.starter.generator.bean.TableDO;
@@ -15,7 +16,10 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.tirose.starter.generator.constant.GeneratorConstant;
+import org.tirose.starter.generator.constant.GeneratorEnum;
+import org.tirose.starter.generator.mapper.GeneratorMapper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -28,29 +32,65 @@ import java.util.zip.ZipOutputStream;
  */
 public class GeneratorUtil {
 
+	private static GeneratorMapper generatorMapper;
+
+	{
+		generatorMapper = ApplicationContextUtil.getBean(GeneratorMapper.class);
+	}
+
 	/**
-	 * 獲取所有的模板文件
+	 * 生成代码
+	 * @param tableNames
 	 * @return
 	 */
-    public static List<String> getTemplates() {
-    	//返回所有模板文件的地址
-        List<String> templates = new ArrayList<String>();
-        templates.add("templates/entity.java.vm");
-		templates.add("templates/entityVO.java.vm");
-		templates.add("templates/entityDTO.java.vm");
-        templates.add("templates/mapper.java.vm");
-        templates.add("templates/mapper.xml.vm");
-        templates.add("templates/service.java.vm");
-        templates.add("templates/serviceImpl.java.vm");
-        templates.add("templates/controller.java.vm");
-        return templates;
-    }
+	public static byte[] generatorCode(GeneratorEnum type, List<String> tableNames) {
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		ZipOutputStream zip = new ZipOutputStream(outputStream);
+		for(String tableName : tableNames){
+			//查询表信息
+			Map<String, String> table = generatorMapper.get(tableName);
+			//查询列信息
+			List<Map<String, String>> columns = generatorMapper.listColumns(tableName);
+			//生成代码
+			doGeneratorCode(table, columns, type, zip);
+		}
+		IOUtils.closeQuietly(zip);
+
+		return outputStream.toByteArray();
+
+	}
+
+	/**
+	 * 生成代码
+	 * @param tableNames
+	 * @return
+	 */
+	public static byte[] generatorCode (GeneratorEnum type, String... tableNames) {
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		ZipOutputStream zip = new ZipOutputStream(outputStream);
+		for(String tableName : tableNames){
+			//查询表信息
+			Map<String, String> table = generatorMapper.get(tableName);
+			//查询列信息
+			List<Map<String, String>> columns = generatorMapper.listColumns(tableName);
+			//生成代码
+			doGeneratorCode(table, columns, type, zip);
+		}
+		IOUtils.closeQuietly(zip);
+
+		return outputStream.toByteArray();
+
+	}
+
+
 
     /**
      * 生成代码
      */
-    public static void generatorCode(Map<String, String> table,
-                                     List<Map<String, String>> columns, ZipOutputStream zip) {
+    public static void doGeneratorCode(Map<String, String> table,
+                                     List<Map<String, String>> columns, GeneratorEnum type, ZipOutputStream zip) {
         //获取配置信息
         Configuration config = getConfig();
         //表信息
@@ -128,7 +168,8 @@ public class GeneratorUtil {
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表
-        List<String> templates = getTemplates();
+
+        List<String> templates = getTemplates(type);
         for (String template : templates) {
             //渲染模板
             StringWriter sw = new StringWriter();
@@ -146,19 +187,35 @@ public class GeneratorUtil {
             }
         }
     }
-
+	/**
+	 * 獲取所有的模板文件
+	 * @return
+	 */
+	private static List<String> getTemplates(GeneratorEnum type) {
+		//返回所有模板文件的地址
+		List<String> templates = new ArrayList<String>();
+		templates.add("templates/" + type.getName() + "/entity.java.vm");
+		templates.add("templates/" + type.getName() + "/entityVO.java.vm");
+		templates.add("templates/" + type.getName() + "/entityDTO.java.vm");
+		templates.add("templates/" + type.getName() + "/mapper.java.vm");
+		templates.add("templates/" + type.getName() + "/mapper.xml.vm");
+		templates.add("templates/" + type.getName() + "/service.java.vm");
+		templates.add("templates/" + type.getName() + "/serviceImpl.java.vm");
+		templates.add("templates/" + type.getName() + "/controller.java.vm");
+		return templates;
+	}
 
     /**
      * 列名转换成Java属性名
      */
-    public static String columnToJava(String columnName) {
+	private static String columnToJava(String columnName) {
         return WordUtils.capitalizeFully(columnName, new char[]{'_'}).replace("_", "");
     }
 
     /**
      * 表名转换成Java类名
      */
-    public static String tableToJava(String tableName, String tablePrefix, String autoRemovePre) {
+	private static String tableToJava(String tableName, String tablePrefix, String autoRemovePre) {
         if (GeneratorConstant.AUTO_REOMVE_PRE.equals(autoRemovePre)) {
             tableName = tableName.substring(tableName.indexOf("_") + 1);
         }
@@ -172,7 +229,7 @@ public class GeneratorUtil {
     /**
      * 获取配置信息
      */
-    public static Configuration getConfig() {
+	private static Configuration getConfig() {
         try {
             return new PropertiesConfiguration("generator.properties");
         } catch (ConfigurationException e) {
@@ -183,7 +240,7 @@ public class GeneratorUtil {
     /**
      * 获取文件名
      */
-    public static String getFileName(String template, String classname, String className, String packageName) {
+    private static String getFileName(String template, String classname, String className, String packageName) {
         String packagePath = "main" + File.separator + "java" + File.separator;
         //String modulesname=config.getString("packageName");
         if (StringUtils.isNotBlank(packageName)) {

@@ -3,7 +3,7 @@ package org.tirose.core.tool.util;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
-import org.tirose.core.boot.exception.SpringInitializeException;
+import org.tirose.core.tool.exception.SpringInitializeException;
 
 import javax.servlet.http.HttpServletRequest;
 

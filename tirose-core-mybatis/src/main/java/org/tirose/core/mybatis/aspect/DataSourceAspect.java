@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 @Log4j2
 public class DataSourceAspect implements Ordered {
     //切入点
-    @Pointcut("@annotation(com.kamfu.supporttong.common.config.mybatisconfig.TargetDataSource)")
+    @Pointcut("@annotation(org.tirose.core.mybatis.annotation.TargetDataSource)")
     public void dataSourcePointCut() {
     }
 

@@ -1,5 +1,7 @@
 package org.tirose.core.mybatis.annotation;
 
+import org.tirose.core.mybatis.config.DataSourceKey;
+
 import java.lang.annotation.*;
 
 /**
@@ -14,5 +16,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface TargetDataSource {
-    com.kamfu.supporttong.common.config.mybatisconfig.DataSourceKey name() default com.kamfu.supporttong.common.config.mybatisconfig.DataSourceKey.DB_FIRST;
+    DataSourceKey name() default DataSourceKey.DB_FIRST;
 }

@@ -2,7 +2,6 @@ package org.tirose.core.tool.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEvent;
-import org.tirose.core.boot.exception.SpringInitializeException;
 
 /**
  * @Auther : 毛一凡

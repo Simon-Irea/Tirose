@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.tirose.core.log.annotation.ApiLog;
-import org.tirose.core.log.persistence.LogPersistence;
 import org.tirose.core.log.publisher.ApiLogPublisher;
 
 /**
@@ -18,9 +17,6 @@ import org.tirose.core.log.publisher.ApiLogPublisher;
 @Component
 @Data
 public class ApiLogAspect {
-
-	private LogPersistence logPersistence;
-
 
     @Pointcut("@annotation(org.tirose.core.log.annotation.ApiLog)")
     public void logPointCut() {

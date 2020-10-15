@@ -62,10 +62,10 @@ public class DynamicDataSourceConfig {
     @Bean
     public DataSource multipleDataSource(@Qualifier("firstDataSource") DataSource firstDataSource,
                                         @Qualifier("secondDataSource") DataSource secondDataSource) {
-        com.kamfu.supporttong.common.config.mybatisconfig.DynamicDataSource dynamicDataSource = new com.kamfu.supporttong.common.config.mybatisconfig.DynamicDataSource();
+        DynamicDataSource dynamicDataSource = new DynamicDataSource();
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put(com.kamfu.supporttong.common.config.mybatisconfig.DataSourceKey.DB_FIRST.getKey(), firstDataSource);
-        targetDataSources.put(com.kamfu.supporttong.common.config.mybatisconfig.DataSourceKey.DB_SECOND.getKey(), secondDataSource);
+        targetDataSources.put(DataSourceKey.DB_FIRST.getKey(), firstDataSource);
+        targetDataSources.put(DataSourceKey.DB_SECOND.getKey(), secondDataSource);
         dynamicDataSource.setTargetDataSources(targetDataSources);
         //设置默认数据源
         dynamicDataSource.setDefaultTargetDataSource(firstDataSource);

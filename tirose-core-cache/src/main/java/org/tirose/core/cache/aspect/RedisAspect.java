@@ -16,6 +16,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 import org.tirose.core.cache.annotation.RedisCache;
+import org.tirose.core.tool.api.ApiResponse;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
@@ -56,7 +57,7 @@ public class RedisAspect {
         String key = annotationKey + ":" + methodName + "_" + paramValue;
         if ((methodName.contains("get") && methodName.substring(0, 3).equalsIgnoreCase("get"))) {
             Object data = getObject(minutes, joinPoint, key);
-            return ResponseInfo.success(data);
+            return ApiResponse.data(data);
         } else if ((methodName.contains("add")  && methodName.substring(0, 3).equalsIgnoreCase("add"))
                 || (methodName.contains("insert") && methodName.substring(0, 6).equalsIgnoreCase("insert"))
                 || (methodName.contains("update")&& methodName.substring(0, 6).equalsIgnoreCase("update"))) {
